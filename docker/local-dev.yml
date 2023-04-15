@@ -1,0 +1,24 @@
+version: "3.1"
+
+services:
+  yummily_db:
+    container_name: yummily_db
+    image: postgres
+    restart: always
+    ports:
+      - 5433:5432
+    environment:
+      POSTGRES_DB: yummily
+      POSTGRES_USER: yummily
+      POSTGRES_PASSWORD: s3cr3t
+    volumes:
+      - local_yummily_db:/var/lib/postgresql/data
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
+
+volumes:
+  local_yummily_db:
