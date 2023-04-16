@@ -15,12 +15,13 @@
     "db:migration:migrate": "ts-node --project tsconfig_scripts.json ./src/lib/db/migrate.ts"
   },
   "dependencies": {
+    "@clerk/nextjs": "^4.16.2",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
     "@types/react-dom": "18.0.11",
     "autoprefixer": "10.4.14",
     "dotenv": "^16.0.3",
-    "drizzle-orm": "^0.23.11",
+    "drizzle-orm": "^0.23.13",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "next": "13.3.0",
@@ -29,7 +30,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "tailwindcss": "3.3.1",
-    "typescript": "5.0.4"
+    "typescript": "5.0.4",
+    "zod": "^3.21.4"
   },
   "devDependencies": {
     "@types/pg": "^8.6.6",

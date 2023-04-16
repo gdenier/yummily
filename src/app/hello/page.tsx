@@ -1,17 +1,12 @@
 import { AddButton } from "./components/AddButton"
-
-async function getHello() {
-  return await (
-    await fetch(`http://localhost:3006/api/hello`, { next: { revalidate: 0 } })
-  ).json()
-}
+import { fetcher } from "~/lib/api/utils/fetcher"
 
 export default async function HelloPage() {
-  const { hellos } = await getHello()
+  const hellos = await fetcher("hello")
 
   return (
     <div>
-      {hellos.map((hello: any) => (
+      {hellos?.map((hello: any) => (
         <p key={hello.id}>{hello.title}</p>
       ))}
       <AddButton />
