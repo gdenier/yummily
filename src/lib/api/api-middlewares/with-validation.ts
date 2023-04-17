@@ -1,7 +1,6 @@
 import type { NextApiHandler, NextApiRequest, NextApiResponse } from "next"
 import * as z from "zod"
 import type { ZodSchema } from "zod"
-import { NextAuthenticatedApiRequest } from "./with-authentication"
 import { SignedInAuthObject, SignedOutAuthObject } from "@clerk/nextjs/dist/api"
 
 export type NextAuthenticatedApiRequestWithBody<Body> = (
