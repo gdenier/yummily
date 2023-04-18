@@ -12,7 +12,7 @@
     "db:migration:generate": "drizzle-kit generate:pg --out src/lib/db/migrations --schema src/lib/db/schema.ts",
     "db:migration:generate:custom": "drizzle-kit generate:pg --custom",
     "db:migration:drop": "drizzle-kit drop",
-    "db:migration:migrate": "ts-node --project tsconfig_scripts.json ./src/lib/db/migrate.ts"
+    "db:migration:migrate": "ts-node --project tsconfig_scripts.json ./src/lib/db/migrate.server.ts"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.16.2",

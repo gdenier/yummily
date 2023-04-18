@@ -4,7 +4,7 @@ import * as dotenv from "dotenv"
 import fs from "fs"
 import { drizzle } from "drizzle-orm/node-postgres"
 
-const localConfig = dotenv.parse(fs.readFileSync("./.env.local", "utf-8"))
+const localConfig = dotenv.parse(fs.readFileSync("./config/.env.prod", "utf-8"))
 
 async function run() {
   if (!localConfig.DATABASE_URL) throw new Error("DATABASE_URL must be define.")
