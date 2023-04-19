@@ -1,12 +1,5 @@
 import { auth } from "@clerk/nextjs/app-beta"
-
-export type HTTPVerb = "GET" | "POST" | "PATCH" | "PUT" | "DELETE"
-
-export interface FetcherOptions {
-  public?: boolean
-  method?: HTTPVerb
-  body?: any
-}
+import { FetcherOptions, HTTPVerb } from "../domain/types"
 
 export async function fetcher(path: string, options?: FetcherOptions) {
   const headers = new Headers()
