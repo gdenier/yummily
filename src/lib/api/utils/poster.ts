@@ -1,7 +1,6 @@
-export async function poster(
-  path: string,
-  options: { getToken: () => Promise<string | null>; body: any }
-) {
+import { PosterOptions } from "./domain/types"
+
+export async function poster(path: string, options: PosterOptions) {
   const headers = new Headers()
   const token = await options.getToken()
   if (!token) throw new Error("Can't call protected route")
