@@ -17,7 +17,3 @@ export default async function HomePage() {
     </Hydrate>
   )
 }
-
-// export default async function HomePage() {
-//   const recipes = await fetcher("recipes")
-// }
