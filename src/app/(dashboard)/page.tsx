@@ -4,16 +4,7 @@ import { Recipes } from "./components/Recipes"
 import { fetcher } from "~/lib/api/utils/server/server-fetcher"
 
 export default async function HomePage() {
-  const queryClient = getQueryClient()
-  await queryClient.prefetchQuery(
-    ["recipes"],
-    async () => await fetcher("recipes")
-  )
-  const dehydratedState = dehydrate(queryClient)
+  const recipes = await fetcher("recipes")
 
-  return (
-    <Hydrate state={dehydratedState}>
-      <Recipes />
-    </Hydrate>
-  )
+  return <Recipes data={recipes} />
 }

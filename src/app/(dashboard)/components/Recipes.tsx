@@ -1,20 +1,9 @@
-"use client"
-
 import { useQuery } from "@tanstack/react-query"
 import { ReactElement } from "react"
 import { fetcher } from "~/lib/api/utils/client/client-fetcher"
 import { Recipe } from "~/lib/db/schema"
 
-export const Recipes = (): ReactElement => {
-  const { data, isLoading, isFetching, isRefetching, refetch } = useQuery<
-    Recipe[]
-  >({
-    queryKey: ["recipes"],
-    queryFn: async () => await fetcher("recipes"),
-  })
-
-  if (isLoading || isFetching) return <p>Loading...</p>
-
+export const Recipes = ({ data }: { data: Recipe[] }): ReactElement => {
   return (
     <>
       <p>Recipes</p>
@@ -25,14 +14,6 @@ export const Recipes = (): ReactElement => {
           </li>
         ))}
       </ul>
-
-      <button
-        onClick={() => {
-          refetch()
-        }}
-      >
-        Refetch
-      </button>
     </>
   )
 }
