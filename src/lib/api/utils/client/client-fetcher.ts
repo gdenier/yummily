@@ -1,3 +1,4 @@
+import { getBaseUrl } from "~/lib/utils"
 import { FetcherClientOptions, HTTPVerb } from "../domain/types"
 
 export async function fetcher(path: string, options?: FetcherClientOptions) {
@@ -8,7 +9,7 @@ export async function fetcher(path: string, options?: FetcherClientOptions) {
     headers.append("Authorization", token)
   }
   return await (
-    await fetch(`http://localhost:3006/api/${path}`, {
+    await fetch(`${getBaseUrl()}/api/${path}`, {
       next: { revalidate: 0 },
       method: options?.method ?? "GET",
       headers,

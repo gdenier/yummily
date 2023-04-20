@@ -1,5 +1,6 @@
 import { auth } from "@clerk/nextjs/app-beta"
 import { FetcherOptions, HTTPVerb } from "../domain/types"
+import { getBaseUrl } from "~/lib/utils"
 
 export async function fetcher(path: string, options?: FetcherOptions) {
   const headers = new Headers()
@@ -10,7 +11,7 @@ export async function fetcher(path: string, options?: FetcherOptions) {
     headers.append("Authorization", token)
   }
   return await (
-    await fetch(`http://localhost:3006/api/${path}`, {
+    await fetch(`${getBaseUrl()}/api/${path}`, {
       next: { revalidate: 0 },
       method: options?.method ?? "GET",
       headers,
