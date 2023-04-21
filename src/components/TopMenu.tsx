@@ -2,28 +2,29 @@ import { PlusSquareIcon, SettingsIcon, UsersIcon } from "lucide-react"
 import Link from "next/link"
 import { ReactElement } from "react"
 import { Logo } from "~/components/Logo"
+import { Button, buttonVariants } from "~/components/ui/button"
 
 export const TopMenu = (): ReactElement => {
   return (
-    <div className="bg-light-beige py-8">
+    <div className="bg-light-beige py-4">
       <nav className=" container mx-auto flex w-full items-center justify-between">
         <Logo />
         <ul className="flex gap-6">
           <li>
-            <Link href="/" className="flex gap-2 text-dark">
-              <PlusSquareIcon />
+            <Link href="/" className={buttonVariants({ variant: "link" })}>
+              <PlusSquareIcon className="mr-2" />
               Ajouter une recette
             </Link>
           </li>
           <li>
-            <Link href="/" className="flex gap-2 text-dark">
-              <UsersIcon />
+            <Link href="/" className={buttonVariants({ variant: "link" })}>
+              <UsersIcon className="mr-2" />
               Mes groupes
             </Link>
           </li>
           <li>
-            <Link href="/" className="flex gap-2 text-dark">
-              <SettingsIcon />
+            <Link href="/" className={buttonVariants({ variant: "link" })}>
+              <SettingsIcon className="mr-2" />
               Mes paramètres
             </Link>
           </li>

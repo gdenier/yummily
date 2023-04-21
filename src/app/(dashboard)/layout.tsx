@@ -1,5 +1,5 @@
 import { ReactNode } from "react"
-import { TopMenu } from "./components/TopMenu"
+import { TopMenu } from "~/components/TopMenu"
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
