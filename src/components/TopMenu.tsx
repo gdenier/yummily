@@ -2,13 +2,15 @@ import { PlusSquareIcon, SettingsIcon, UsersIcon } from "lucide-react"
 import Link from "next/link"
 import { ReactElement } from "react"
 import { Logo } from "~/components/Logo"
-import { Button, buttonVariants } from "~/components/ui/button"
+import { buttonVariants } from "~/components/ui/button"
 
 export const TopMenu = (): ReactElement => {
   return (
     <div className="bg-light-beige py-4">
       <nav className=" container mx-auto flex w-full items-center justify-between">
-        <Logo />
+        <Link href="/">
+          <Logo />
+        </Link>
         <ul className="flex gap-6">
           <li>
             <Link href="/" className={buttonVariants({ variant: "link" })}>
