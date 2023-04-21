@@ -23,7 +23,10 @@ export const TopMenu = (): ReactElement => {
             </Link>
           </li>
           <li>
-            <Link href="/" className={buttonVariants({ variant: "link" })}>
+            <Link
+              href="/settings"
+              className={buttonVariants({ variant: "link" })}
+            >
               <SettingsIcon className="mr-2" />
               Mes paramètres
             </Link>
