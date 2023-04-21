@@ -1,5 +1,5 @@
 import { auth } from "@clerk/nextjs/app-beta"
-import { FetcherOptions, HTTPVerb } from "../domain/types"
+import { FetcherOptions } from "../domain/types"
 import { getBaseUrl } from "~/lib/utils"
 
 export async function fetcher(path: string, options?: FetcherOptions) {

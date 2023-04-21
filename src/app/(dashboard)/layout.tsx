@@ -1,11 +1,11 @@
 import { ReactNode } from "react"
-import { Sidebard } from "./components/Sidebard"
+import { TopMenu } from "./components/TopMenu"
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
   return (
-    <div className="flex h-[100dvh] w-screen bg-gray-900 text-slate-50">
-      <Sidebard />
-      <main className="w-full">{children}</main>
+    <div className="flex h-[100dvh] w-screen flex-col">
+      <TopMenu />
+      <main>{children}</main>
     </div>
   )
 }
