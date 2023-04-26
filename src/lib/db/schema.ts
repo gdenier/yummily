@@ -59,7 +59,10 @@ export const ingredients = pgTable("ingredients", {
 
 export const unitEnum = pgEnum("unit", [
   "gram",
+  "kilogram",
   "centilitre",
+  "mililitre",
+  "liter",
   "tablespoon",
   "teaspoon",
   "pinch",
@@ -76,7 +79,7 @@ export const recipeIngredients = pgTable(
 
     // Must be save in integer and retrieve in the right format depends on unit if float is necessary
     quantity: integer("quantity").notNull(),
-    unit: unitEnum("unit").notNull(),
+    unit: unitEnum("unit"),
   },
   (recipeIngredients) => ({
     primaryKey: primaryKey(

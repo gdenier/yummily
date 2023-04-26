@@ -1,15 +1,13 @@
 import { fetcher } from "~/lib/api/utils/server/server-fetcher"
-import { Input } from "~/components/ui/input"
-import { SearchIcon } from "lucide-react"
 import { Button } from "~/components/ui/button"
 import Image from "next/image"
-import { RecipeCard } from "./RecipeCard"
 import { Recipe } from "~/lib/db/schema"
 import { currentUser } from "@clerk/nextjs/app-beta"
+import { RecipeSearchbar } from "./RecipeSearchbar"
+import { RecipeList } from "./RecipeList"
 
 export default async function HomePage() {
   const recipes = (await fetcher("recipes")) as Recipe[]
-  const user = await currentUser()
 
   const dayMoment = (() => {
     const hour = new Date().getHours()
@@ -25,14 +23,7 @@ export default async function HomePage() {
           <h2 className="z-10 font-serif text-2xl">
             Qu’aimeriez vous préparer pour le {dayMoment} ?
           </h2>
-          <div className="z-10 flex w-full items-center gap-2 rounded-md bg-white pr-3 shadow-down">
-            <Input
-              type="search"
-              placeholder="Tarte, risotto, salade..."
-              className="border-none "
-            />
-            <SearchIcon />
-          </div>
+          <RecipeSearchbar />
           <div className="z-10 flex gap-4">
             <Button variant="outline">
               Entrées
@@ -56,11 +47,7 @@ export default async function HomePage() {
           />
         </div>
       </div>
-      <div className="container mx-auto mt-8 grid w-full grid-cols-3 gap-4">
-        {recipes.map((recipe) => (
-          <RecipeCard key={recipe.id} recipe={recipe} user={user} />
-        ))}
-      </div>
+      <RecipeList recipes={recipes} />
     </div>
   )
 }

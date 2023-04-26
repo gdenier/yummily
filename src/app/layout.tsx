@@ -1,6 +1,5 @@
 import { ClerkProvider } from "@clerk/nextjs/app-beta"
 import "~/styles/globals.css"
-import { Providers } from "./Providers"
 import { Poppins, Source_Sans_Pro, Yeseva_One } from "next/font/google"
 
 const poppins = Poppins({
@@ -30,15 +29,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <ClerkProvider>
-      <html
-        lang="fr"
-        className={`font-sans ${poppins.variable} ${sourceSansPro.variable} ${YesevaOne.variable}`}
-      >
-        <body>
-          <Providers>{children}</Providers>
-        </body>
-      </html>
-    </ClerkProvider>
+    <html
+      lang="fr"
+      className={`${poppins.variable} ${sourceSansPro.variable} ${YesevaOne.variable}`}
+    >
+      <ClerkProvider>
+        <body>{children}</body>
+      </ClerkProvider>
+    </html>
   )
 }
