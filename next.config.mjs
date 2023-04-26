@@ -7,6 +7,7 @@
 /** @type {import("next").NextConfig} */
 const config = {
   reactStrictMode: true,
+  optimizeFonts: false,
   experimental: {
     appDir: true,
     serverComponentsExternalPackages: ["pg"],
