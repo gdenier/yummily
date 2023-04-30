@@ -1,0 +1,81 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["jsonProtocol"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Recipe {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map(name: "updated_at")
+
+  title           String
+  description     String?
+  preparationTime Int?        @map(name: "preparation_time")
+  restTime        Int?        @map(name: "rest_time")
+  bakingTime      Int?        @map(name: "baking_time")
+  type            RecipeType?
+
+  ingredients RecipeIngredient[]
+  steps       Step[]
+
+  userId         String  @map(name: "user_id")
+  organizationId String? @map(name: "organization_id")
+
+  @@index([title, organizationId])
+  @@index([title, userId])
+}
+
+enum RecipeType {
+  appetizer
+  main
+  dessert
+}
+
+model Ingredient {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map(name: "updated_at")
+
+  name String
+
+  recipe_ingredients RecipeIngredient[]
+}
+
+model RecipeIngredient {
+  recipeId     String @map(name: "recipe_id")
+  ingredientId String @map(name: "ingredient_id")
+
+  quantity Int
+  unit     Unit
+
+  ingredient Ingredient @relation(fields: [ingredientId], references: [id], onDelete: Cascade)
+  recipe     Recipe     @relation(fields: [recipeId], references: [id], onDelete: Cascade)
+
+  @@id([recipeId, ingredientId])
+}
+
+enum Unit {
+  gram
+  centilitre
+  tablespoon
+  teaspoon
+  pinch
+  raw
+}
+
+model Step {
+  id        String   @id @default(cuid())
+  createdAt DateTime @default(now()) @map(name: "created_at")
+  updatedAt DateTime @default(now()) @updatedAt @map(name: "updated_at")
+
+  content String
+  index   Int
+
+  recipes Recipe? @relation(fields: [recipe], references: [id], onDelete: Cascade)
+  recipe  String? @map(name: "recipe_id")
+}

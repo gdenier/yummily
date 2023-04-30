@@ -8,14 +8,11 @@
     "start": "next start",
     "lint": "next lint",
     "start:db": "docker compose -f ./docker/local-dev.yml up -d",
-    "---- ORM": "",
-    "db:migration:generate": "drizzle-kit generate:pg --out src/lib/db/migrations --schema src/lib/db/schema.ts",
-    "db:migration:generate:custom": "drizzle-kit generate:pg --custom",
-    "db:migration:drop": "drizzle-kit drop",
-    "db:migration:migrate": "ts-node --project tsconfig_scripts.json ./src/lib/db/migrate.server.ts"
+    "prisma": "dotenv -e .env.local -- npx prisma"
   },
   "dependencies": {
     "@clerk/nextjs": "^4.16.2",
+    "@prisma/client": "4.13.0",
     "@radix-ui/react-avatar": "^1.0.2",
     "@types/node": "18.15.11",
     "@types/react": "18.0.35",
@@ -23,15 +20,12 @@
     "autoprefixer": "10.4.14",
     "class-variance-authority": "^0.5.2",
     "clsx": "^1.2.1",
-    "dotenv": "^16.0.3",
-    "drizzle-orm": "^0.23.13",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
     "fuse.js": "^6.6.2",
     "immer": "^10.0.1",
     "lucide-react": "^0.171.0",
     "next": "13.3.0",
-    "pg": "^8.10.0",
     "postcss": "8.4.21",
     "react": "18.2.0",
     "react-dom": "18.2.0",
@@ -44,9 +38,11 @@
   },
   "devDependencies": {
     "@types/pg": "^8.6.6",
+    "dotenv-cli": "^7.2.1",
     "drizzle-kit": "^0.17.4",
     "prettier": "^2.8.7",
     "prettier-plugin-tailwindcss": "^0.2.7",
+    "prisma": "^4.13.0",
     "ts-node": "^10.9.1"
   }
 }

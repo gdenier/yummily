@@ -1,13 +1,13 @@
 import { fetcher } from "~/lib/api/utils/server/server-fetcher"
 import { Button } from "~/components/ui/button"
 import Image from "next/image"
-import { Recipe } from "~/lib/db/schema"
 import { currentUser } from "@clerk/nextjs/app-beta"
 import { RecipeSearchbar } from "./RecipeSearchbar"
 import { RecipeList } from "./RecipeList"
+import { GetManyRecipeResponse } from "~/pages/api/recipes"
 
 export default async function HomePage() {
-  const recipes = (await fetcher("recipes")) as Recipe[]
+  const recipes = (await fetcher("recipes")) as GetManyRecipeResponse
 
   const dayMoment = (() => {
     const hour = new Date().getHours()

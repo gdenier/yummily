@@ -13,7 +13,10 @@ export const TopMenu = (): ReactElement => {
         </Link>
         <ul className="flex gap-6">
           <li>
-            <Link href="/" className={buttonVariants({ variant: "link" })}>
+            <Link
+              href="/recipes/create"
+              className={buttonVariants({ variant: "link" })}
+            >
               <PlusSquareIcon className="mr-2" />
               Ajouter une recette
             </Link>

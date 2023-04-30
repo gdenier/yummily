@@ -4,10 +4,11 @@ import {
 } from "~/lib/api/api-middlewares/with-authentication"
 import { withMethods } from "~/lib/api/api-middlewares/with-methods"
 import db from "~/lib/db"
-import { recipes } from "~/lib/db/schema"
+import { Recipe } from "@prisma/client"
 
+export type GetManyRecipeResponse = Recipe[]
 const GET: NextAuthenticatedApiRequest = async (req, res, session) => {
-  const data = await db.select().from(recipes)
+  const data = await db.recipe.findMany()
 
   return res.json(data)
 }
