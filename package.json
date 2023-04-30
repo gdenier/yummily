@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev --port 3006",
     "build": "next build",
+    "postinstall": "prisma generate",
     "start": "next start",
     "lint": "next lint",
     "start:db": "docker compose -f ./docker/local-dev.yml up -d",
