@@ -6,7 +6,7 @@ import { SignedInAuthObject, SignedOutAuthObject } from "@clerk/nextjs/dist/api"
 export type NextAuthenticatedApiRequestWithBody<Body> = (
   req: NextApiRequest,
   res: NextApiResponse<any>,
-  session: SignedInAuthObject | SignedOutAuthObject,
+  session: SignedInAuthObject,
   body: Body
 ) => unknown | Promise<unknown>
 
@@ -17,7 +17,7 @@ export function withValidation<T extends ZodSchema>(
   return async function (
     req: NextApiRequest,
     res: NextApiResponse,
-    session: SignedInAuthObject | SignedOutAuthObject
+    session: SignedInAuthObject
   ) {
     try {
       return handler(

@@ -5,14 +5,14 @@ import type { NextApiRequest, NextApiResponse } from "next"
 export type NextAuthenticatedApiRequest = (
   req: NextApiRequest,
   res: NextApiResponse<any>,
-  session: SignedInAuthObject | SignedOutAuthObject
+  session: SignedInAuthObject
 ) => unknown | Promise<unknown>
 
 export function withAuthentication(handler: NextAuthenticatedApiRequest) {
   return async function (req: NextApiRequest, res: NextApiResponse) {
     const session = getAuth(req)
 
-    if (!session) {
+    if (!session || !session.userId) {
       return res.status(403).end()
     }
 

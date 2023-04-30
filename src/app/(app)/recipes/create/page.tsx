@@ -1,3 +1,5 @@
+import { CreateRecipeForm } from "./components/CreateRecipeForm"
+
 export default async function CreateRecipePage() {
-  return <h1>CreateRecipePage</h1>
+  return <CreateRecipeForm />
 }
