@@ -1,10 +1,18 @@
 import { fetcher } from "~/lib/api/utils/server/server-fetcher"
 import { Button } from "~/components/ui/button"
 import Image from "next/image"
-import { currentUser } from "@clerk/nextjs/app-beta"
 import { RecipeSearchbar } from "./RecipeSearchbar"
 import { RecipeList } from "./RecipeList"
 import { GetManyRecipeResponse } from "~/pages/api/recipes"
+import { useMemo } from "react"
+import { auth } from "@clerk/nextjs/app-beta"
+
+export const revalidate = 0
+
+const findTOken = async () => {
+  const { getToken } = auth()
+  return await getToken()
+}
 
 export default async function HomePage() {
   const recipes = (await fetcher("recipes")) as GetManyRecipeResponse
@@ -16,8 +24,11 @@ export default async function HomePage() {
     return "petit dejeuner"
   })()
 
+  const token = await findTOken()
+
   return (
     <div>
+      <p>{token}</p>
       <div className="bg-light-beige py-16">
         <div className="container relative mx-auto flex w-9/12 flex-col items-center gap-6">
           <h2 className="z-10 font-serif text-2xl">
@@ -44,6 +55,7 @@ export default async function HomePage() {
             alt="illustration of an orange recipe book"
             width={224}
             height={227}
+            priority
           />
         </div>
       </div>
@@ -51,5 +63,3 @@ export default async function HomePage() {
     </div>
   )
 }
-
-export const revalidate = 0

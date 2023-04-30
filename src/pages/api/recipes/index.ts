@@ -15,6 +15,7 @@ const GET: NextAuthenticatedApiRequest = async (req, res, session) => {
   return res.json(data)
 }
 
+export type CreateRecipeResponse = Recipe
 const POST: NextAuthenticatedApiRequest = withValidation(
   createRecipeSchema,
   async (_, res, session, body) => {

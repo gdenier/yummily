@@ -8,6 +8,7 @@ import { useRecipes, useRecipesStore } from "./useRecipes"
 import { useUser } from "@clerk/nextjs"
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
 import { Recipe } from "@prisma/client"
+import Link from "next/link"
 
 export const RecipeList = ({
   recipes: initialData,
@@ -47,7 +48,7 @@ const RecipeCard = ({ recipe }: { recipe: Recipe }): ReactElement => {
           <ImageIcon className="h-10 w-10" />
         </div>
         <div className="flex w-2/3 flex-col gap-4 p-6">
-          <p>{recipe.title}</p>
+          <Link href={`/recipes/${recipe.id}`}>{recipe.title}</Link>
           <div className="flex items-center justify-between">
             <Badge>Plat</Badge>
             <div className="flex gap-1">

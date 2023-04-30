@@ -14,6 +14,7 @@ import { Ingredients } from "./Ingredients"
 import { Steps } from "./Steps"
 import { Placeholder } from "~/components/Placeholder"
 import { Button } from "~/components/ui/button"
+import { CreateRecipeResponse } from "~/pages/api/recipes"
 
 export const createRecipeSchema = z.object({
   title: z.string(),
@@ -68,14 +69,14 @@ export const CreateRecipeForm = (): ReactElement => {
   const onSubmit = async (values: z.infer<typeof createRecipeSchema>) => {
     setIsFetching(true)
 
-    await poster(`recipes`, {
+    const recipe = (await poster(`recipes`, {
       getToken,
       body: values,
-    })
+    })) as CreateRecipeResponse
     setIsFetching(false)
 
     startTransition(() => {
-      router.push("/")
+      router.push(`/recipes/${recipe.id}`)
     })
   }
 

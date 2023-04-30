@@ -12,7 +12,7 @@ export async function fetcher(path: string, options?: FetcherOptions) {
   }
   return await (
     await fetch(`${getBaseUrl()}/api/${path}`, {
-      next: { revalidate: 0 },
+      // next: { revalidate: 0 },
       method: options?.method ?? "GET",
       headers,
       body: options?.body ? JSON.stringify(options.body) : undefined,
