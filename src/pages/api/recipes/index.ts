@@ -21,6 +21,10 @@ const POST: NextAuthenticatedApiRequest = withValidation(
     const newRecipe = await db.recipe.create({
       data: {
         title: body.title,
+        bakingTime: body.bakingTime,
+        persons: body.persons,
+        preparationTime: body.preparationTime,
+        restTime: body.restTime,
         userId: session.userId,
       },
     })

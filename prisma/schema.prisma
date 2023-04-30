@@ -15,10 +15,11 @@ model Recipe {
 
   title           String
   description     String?
-  preparationTime Int?        @map(name: "preparation_time")
-  restTime        Int?        @map(name: "rest_time")
-  bakingTime      Int?        @map(name: "baking_time")
-  type            RecipeType?
+  preparationTime Int?            @map(name: "preparation_time")
+  restTime        Int?            @map(name: "rest_time")
+  bakingTime      Int?            @map(name: "baking_time")
+  category        RecipeCategory?
+  persons         Int?
 
   ingredients RecipeIngredient[]
   steps       Step[]
@@ -30,7 +31,7 @@ model Recipe {
   @@index([title, userId])
 }
 
-enum RecipeType {
+enum RecipeCategory {
   appetizer
   main
   dessert
