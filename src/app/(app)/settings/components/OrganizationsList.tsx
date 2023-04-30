@@ -1,13 +1,10 @@
 "use client"
 
 import { useOrganizationList, useOrganization } from "@clerk/nextjs"
-import { or } from "drizzle-orm"
-import { monitorEventLoopDelay } from "perf_hooks"
 import { ReactElement } from "react"
 
 export const OrganizationsList = (): ReactElement => {
-  const { setActive, organizationList, isLoaded } = useOrganizationList()
-  const { organization } = useOrganization()
+  const { organizationList, isLoaded } = useOrganizationList()
 
   if (!isLoaded) return <p>Loading...</p>
 

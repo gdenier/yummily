@@ -2,9 +2,9 @@
 
 import { create } from "zustand"
 import { immer } from "zustand/middleware/immer"
-import { Recipe } from "~/lib/db/schema"
 import Fuse from "fuse.js"
 import { useMemo } from "react"
+import { Recipe } from "@prisma/client"
 
 interface RecipesState {
   recipes: Recipe[]

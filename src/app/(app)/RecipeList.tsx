@@ -4,10 +4,10 @@ import { ImageIcon, ClockIcon } from "lucide-react"
 import { ReactElement, useEffect } from "react"
 import { Badge } from "~/components/ui/badge"
 import { Card, CardContent } from "~/components/ui/card"
-import { Recipe } from "~/lib/db/schema"
 import { useRecipes, useRecipesStore } from "./useRecipes"
 import { useUser } from "@clerk/nextjs"
 import { Avatar, AvatarFallback, AvatarImage } from "~/components/ui/avatar"
+import { Recipe } from "@prisma/client"
 
 export const RecipeList = ({
   recipes: initialData,
