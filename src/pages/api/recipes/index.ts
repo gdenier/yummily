@@ -26,7 +26,18 @@ const POST: NextAuthenticatedApiRequest = withValidation(
         persons: body.persons,
         preparationTime: body.preparationTime,
         restTime: body.restTime,
+        category: body.category,
         userId: session.userId,
+        ingredients: {
+          createMany: {
+            data: body.ingredients,
+          },
+        },
+        steps: {
+          createMany: {
+            data: body.steps,
+          },
+        },
       },
     })
 

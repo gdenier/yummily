@@ -1,6 +1,6 @@
 "use client"
 
-import { ReactElement, useState, useTransition } from "react"
+import { ReactElement, useEffect, useState, useTransition } from "react"
 import { FormProvider, useForm } from "react-hook-form"
 import { zodResolver } from "@hookform/resolvers/zod"
 import { z } from "zod"
@@ -40,7 +40,7 @@ export const createRecipeSchema = z.object({
         Unit.tablespoon,
         Unit.teaspoon,
       ]),
-      ingredient: z.object({ id: z.string().cuid() }),
+      name: z.string(),
     })
   ),
   steps: z.array(
